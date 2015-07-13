@@ -16,6 +16,8 @@ class Sha3Config extends ChiselConfig {
       case "fast_mem" => Knob("fast_mem")
       case "buffer_sram" => Dump(Knob("buffer_sram"))
       case BuildRoCC => Some(() => (Module(new Sha3Accel, { case CoreName => "Sha3" })))
+      case RoCCMaxTaggedMemXacts => 1
+      case TLId => "L1ToL2"
     }
   }
  

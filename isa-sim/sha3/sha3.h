@@ -37,6 +37,8 @@ public:
     hash_addr = 0;
     msg_len = 0;
   }
+  
+  std::vector<disasm_insn_t*> get_disasms();
 
   reg_t custom0(rocc_insn_t insn, reg_t xs1, reg_t xs2)
   {

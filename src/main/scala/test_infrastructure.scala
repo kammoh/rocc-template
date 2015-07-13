@@ -338,12 +338,13 @@ class RoCCInterface extends Bundle
 abstract class SimpleRoCC extends RoCC
 {
   io.interrupt := Bool(false)
-    // Set this true to trigger an interrupt on the processor (please refer to supervisor documentation)
+  // Set this true to trigger an interrupt on the processor (please refer to supervisor documentation)
 
-  //a simple accelerator doesn't use imem or page tables
+  //a simple accelerator doesn't use imem, dmem, or page tables
   io.imem.acquire.valid := Bool(false)
   io.imem.grant.ready := Bool(true)
-  io.imem.finish.valid := Bool(false)
+  io.dmem.acquire.valid := Bool(false)
+  io.dmem.grant.ready := Bool(false)
   io.iptw.req.valid := Bool(false)
   io.dptw.req.valid := Bool(false)
   io.pptw.req.valid := Bool(false)

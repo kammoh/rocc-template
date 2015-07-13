@@ -10,7 +10,7 @@
 
 int main() {
 
-  do {
+//  do {
     //printf("start basic test 1.\n");
     // BASIC TEST 1 - 150 zero bytes
 
@@ -20,6 +20,7 @@ int main() {
     unsigned char output[SHA3_256_DIGEST_SIZE];
 
     asm volatile ("fence");
+    printf("after fence 1\n");
     // Invoke the acclerator and check responses
 
     // setup accelerator with addresses of input and output
@@ -36,13 +37,17 @@ int main() {
     {221,204,157,217,67,211,86,31,54,168,44,245,97,194,193,26,234,42,135,166,66,134,39,174,184,61,3,149,137,42,57,238};
     //sha3ONE(input, ilen, result);
     for(i = 0; i < SHA3_256_DIGEST_SIZE; i++){
-      //printf("output[%d]:%d ==? results[%d]:%d \n",i,output[i],i,result[i]);
+      printf("output[%d]:%d ==? results[%d]:%d \n",i,output[i],i,result[i]);
       //assert(output[i]==result[i]);
+      if(output[i] != result[i]) {
+      	printf("ERROR: output differs from expected result!!!\n");
+	return 1;
+      }
     }
 
-  }while(0);
+  //}while(0);
 
   
-  //printf("success!\n");
+  printf("success!\n");
   return 0;
 }

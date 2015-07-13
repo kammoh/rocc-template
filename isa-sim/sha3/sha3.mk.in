@@ -8,5 +8,6 @@ sha3_hdrs = \
 
 sha3_srcs = \
 	sha3.cc \
+	sha3_disasm.cc
 
 sha3_test_srcs =
